@@ -117,7 +117,7 @@
   color: var(--accent);
 }
 
-@media (max-width: 345px) {
+@media (max-width: 430px) {
   .cart-sidebar {
     width: 320px;
   }
