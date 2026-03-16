@@ -1,0 +1,49 @@
+/* components/Watermark/Watermark.css */
+.watermark-container {
+    position: relative;
+    display: inline-block;
+    /* O el ajuste que prefieras para tu diseño */
+    max-width: 100%;
+    /* Asegura que la imagen no se desborde */
+    height: auto;
+}
+
+.watermarked-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Elimina espacio inferior extra */
+}
+
+.watermark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Permite clics "a través" si es necesario */
+    display: flex;
+    flex-direction: column;
+    /* Organiza el texto en columnas */
+    justify-content: center;
+    /* Centra verticalmente */
+    align-items: center;
+    /* Centra horizontalmente */
+    overflow: hidden;
+    /* Oculta texto que se salga */
+}
+
+.watermark-text {
+    color: rgba(255, 255, 255, 0.3);
+    /* Blanco semi-transparente */
+    font-size: 2rem;
+    /* Ajusta el tamaño */
+    font-weight: bold;
+    transform: rotate(-45deg);
+    /* Gira el texto */
+    margin: 1rem 0;
+    /* Espacio entre las repeticiones del texto */
+    white-space: nowrap;
+    /* Evita saltos de línea */
+}

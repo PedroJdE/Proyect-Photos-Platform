@@ -1,0 +1,102 @@
+/* src/components/Portfolio/Portfolio.css */
+
+.portfolio-page {
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.portfolio__header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.portfolio__title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.portfolio__subtitle {
+    font-size: 1.1rem;
+    color: #777;
+}
+
+/* --- CONFIGURACIÓN CLAVE PARA EL MASONRY --- */
+
+.portfolio-masonry-grid {
+    display: flex;
+    margin-left: -20px;
+    /* Margen negativo para compensar el gap de las columnas */
+    width: auto;
+}
+
+.portfolio-masonry-grid_column {
+    padding-left: 20px;
+    /* Gap entre columnas */
+    background-clip: padding-box;
+}
+
+/* Estilos para cada item individual */
+.portfolio-item {
+    margin-bottom: 20px;
+    /* Gap vertical entre fotos */
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    /* Importante para el efecto hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- EFECTO ZOOM HOVER --- */
+
+/* Contenedor de la imagen para que el zoom no se salga de los bordes */
+.portfolio-item__image-wrapper {
+    position: relative;
+    overflow: hidden;
+    /* Importante para que la imagen al crecer se corte */
+}
+
+.portfolio-item__image {
+    width: 100%;
+    height: auto;
+    /* Mantiene la relación de aspecto automática */
+    display: block;
+    /* La transición del zoom debe estar en la imagen */
+    transition: transform 0.5s ease;
+}
+
+/* Al pasar el mouse por el ITEM completo, aplicamos el zoom a la IMAGEN */
+.portfolio-item:hover .portfolio-item__image {
+    transform: scale(1.08);
+    /* Pequeño zoom del 8% */
+}
+
+/* Opcional: Pequeña elevación del card completo en hover */
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Capa de texto opcional sobre la foto */
+.portfolio-item__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-item__overlay {
+    opacity: 1;
+}
+
+.portfolio-item__title {
+    margin: 0;
+    font-size: 1.1rem;
+}

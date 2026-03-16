@@ -128,3 +128,28 @@
     flex-direction: row;
   }
 }
+
+.header__search-btn {
+  background-color: #007bff; /* Color azul llamativo */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.header__search-btn:hover {
+  background-color: transparent;
+  border-color: #007bff;
+  color: #007bff !important;
+}
+
+/* Para que los elementos de la lista se alineen bien */
+.header__nav ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}

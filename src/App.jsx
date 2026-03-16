@@ -8,6 +8,7 @@ import PhotoFolder from './components/PhotoFolder/PhotoFolder';
 import Cart from './components/Cart/Cart';
 import Notification from './components/Notification/Notification';
 import CartSidebar from './components/CartSidebar/CartSidebar';
+import Portfolio from './components/Portfolio/Portfolio'; // <--- IMPORTA TU NUEVO COMPONENTE
 import { folders } from './data/photos';
 
 function AppContent() {
@@ -18,14 +19,23 @@ function AppContent() {
     <>
       <Header onCartClick={toggleSidebar} onDateChange={setDateFilter} />
       <Routes>
+        {/* NUEVA RUTA: El inicio ahora muestra el Portfolio */}
         <Route 
           path="/" 
+          element={<Portfolio />} 
+        />
+        
+        {/* RUTA DE BÚSQUEDA: Aquí es donde movimos lo que antes era el inicio */}
+        <Route 
+          path="/buscar" 
           element={<PhotoList folders={folders} dateFilter={dateFilter} />} 
         />
+        
         <Route 
           path="/folder/:id" 
           element={<PhotoFolder />} 
         />
+        
         <Route 
           path="/cart" 
           element={<Cart />} 
