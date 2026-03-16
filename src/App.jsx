@@ -1,32 +1,30 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { CartProvider, useCart } from './contexts/CartContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import PhotoList from './components/PhotoList/PhotoList';
-import PhotoDetail from './components/PhotoDetail/PhotoDetail';
+import PhotoFolder from './components/PhotoFolder/PhotoFolder';
 import Cart from './components/Cart/Cart';
-import { photos } from './data/photos';
+import Notification from './components/Notification/Notification';
+import CartSidebar from './components/CartSidebar/CartSidebar';
+import { folders } from './data/photos';
 
-function App() {
-  const [cart, setCart] = useState([]);
+function AppContent() {
+  const { showSidebar, toggleSidebar, notification } = useCart();
+  const [dateFilter, setDateFilter] = useState('');
 
   return (
-    <Router>
-      <Header />
+    <>
+      <Header onCartClick={toggleSidebar} onDateChange={setDateFilter} />
       <Routes>
         <Route 
           path="/" 
-          element={<PhotoList photos={photos} />} 
+          element={<PhotoList folders={folders} dateFilter={dateFilter} />} 
         />
         <Route 
-          path="/photo/:id" 
-          element={
-            <div>
-              {photos.length > 0 && (
-                <PhotoDetail photo={photos[0]} />
-              )}
-            </div>
-          } 
+          path="/folder/:id" 
+          element={<PhotoFolder />} 
         />
         <Route 
           path="/cart" 
@@ -34,7 +32,19 @@ function App() {
         />
       </Routes>
       <Footer />
-    </Router>
+      <CartSidebar isOpen={showSidebar} onClose={toggleSidebar} />
+      {notification && <Notification message={notification} />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <CartProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </CartProvider>
   );
 }
 

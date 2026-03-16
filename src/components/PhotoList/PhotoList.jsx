@@ -1,13 +1,17 @@
 import './PhotoList.css';
 import PhotoCard from '../PhotoCard/PhotoCard';
 
-function PhotoList({ photos }) {
+function PhotoList({ folders, dateFilter }) {
+  const filteredFolders = dateFilter
+    ? folders.filter(folder => folder.productionDate === dateFilter)
+    : folders;
+
   return (
     <div className="photo-list">
-      <h2 className="photo-list__title">Catálogo de Fotos</h2>
+      <h2 className="photo-list__title">Catálogo de Carpetas de Fotos</h2>
       <div className="photo-list__grid">
-        {photos.map((photo) => (
-          <PhotoCard key={photo.id} photo={photo} />
+        {filteredFolders.map((folder) => (
+          <PhotoCard key={folder.id} folder={folder} />
         ))}
       </div>
     </div>
