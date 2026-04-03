@@ -29,22 +29,28 @@ function Header({ onCartClick, onDateChange }) {
 
       <nav className="header__nav">
         <ul>
-          <li><Link to="/">Inicio / Portfolio</Link></li>
+          <li><Link to="/">Inicio</Link></li>
           
           {/* Nuevo botón destacado para ir a la plataforma de búsqueda */}
-          <li>
-            <Link to="/buscar" className="header__search-btn">
-              Buscar mis fotos
-            </Link>
-          </li>
+          {location.pathname !== '/buscar' && (
+            <li>
+              <Link to="/buscar" className="header__search-btn">
+                <span className="header__search-text-full">Buscar </span>
+                <i className="bi bi-search" aria-hidden="true"></i>
+                mis fotos
+              </Link>
+            </li>
+          )}
 
-          <li>
-            <button className="header__cart-button" onClick={onCartClick}>
-              <i className={cart.length > 0 ? 'bi bi-cart-check-fill' : 'bi bi-cart-plus'} aria-hidden="true" />
-              <span className="header__cart-text">Carrito</span>
-              <span className="header__cart-count">({cart.length})</span>
-            </button>
-          </li>
+          {location.pathname === '/buscar' && (
+            <li>
+              <button className="header__cart-button" onClick={onCartClick}>
+                <i className={cart.length > 0 ? 'bi bi-cart-check-fill' : 'bi bi-cart-plus'} aria-hidden="true" />
+                <span className="header__cart-text">Carrito</span>
+                <span className="header__cart-count">({cart.length})</span>
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
     </header>
